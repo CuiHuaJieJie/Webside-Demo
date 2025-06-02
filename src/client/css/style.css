@@ -1,0 +1,294 @@
+/* ======================== */
+/* === CSS 规范化优化版 === */
+/* ======================== */
+
+:root {
+    /* 尺寸变量 */
+    --spacing-main: 2%;
+    --spacing-base: 10px;
+    
+    /* 简化后的语义化颜色变量 */
+    --color-base: #000;
+    --color-header: #f5f5dc;
+    --color-primary: hsl(180, 100%, 50%);
+    --color-secondary: hsl(160, 100%, 75%);
+    --color-body: rgb(95, 158, 134);
+    
+    /* 三列区域颜色 */
+    --color-column-left: brown;
+    --color-column-middle: rgb(97, 206, 93);
+    --color-column-right: rgb(196, 152, 226);
+    
+    /* 列内区域颜色 - 更清晰的命名 */
+    --color-cadetblue: cadetblue;
+    --color-purple: rgb(88, 35, 86);
+    --color-lime: rgb(159, 206, 105);
+    --color-darkpurple: rgb(52, 19, 94);
+    --color-darkred: rgb(54, 14, 34);
+    --color-cyan: rgb(162, 230, 233);
+    --color-green: rgb(80, 223, 37);
+
+        /* 终端区域颜色 */
+    --color-bg: #000;
+    --color-terminal: #0a0f1a;
+    --color-header: #1e2b43;
+    --color-active: #00ff8c;
+    --color-text: #48ff00;
+    --color-info: #63b3ff;
+    --color-warn: #ffbd2e;
+    --color-error: #ff5f57;
+}
+
+/* ===== 全局重置 ===== */
+*, 
+*::before, 
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  background-color: var(--color-base);
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-base);
+  font-family: system-ui, -apple-system, sans-serif; /* 添加默认字体栈 */
+}
+
+/* ===== 主容器布局 ===== */
+.container {
+  display: flex;
+  flex: 1;
+  padding: 0 var(--spacing-main);
+  gap: var(--spacing-base);
+}
+
+/* ===== 侧边栏样式 ===== */
+.container__right {
+  flex: 0 0 5%;
+  background-color: var(--color-secondary);
+  overflow: hidden;
+}
+
+/* ===== 主内容区域 ===== */
+.container__main {
+  flex: 0 0 95%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+/* ===== 头部区域 ===== */
+.main__head {
+  flex: 0 0 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: var(--spacing-base);
+  background-color: var(--color-header);
+  font-weight: 600;
+}
+
+/* ===== 主体区域 ===== */
+.main__body {
+  flex: 1;
+  display: flex;
+  padding: var(--spacing-base);
+  gap: var(--spacing-base);
+}
+
+/* ===== 三列布局样式 ===== */
+.body-column {
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.body__left { flex: 0 0 35%; }
+.body__middle { flex: 0 0 30%; }
+.body__right { flex: 0 0 35%; }
+
+/* ===== 列内区域通用样式 ===== */
+.column-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: var(--spacing-base);
+  font-size: 0.9rem;
+  min-height: 50px; /* 确保最小高度 */
+}
+
+/* ===== 左侧列内区域 ===== */
+.left__top {
+  display: flex;
+  flex: 0 0 75%;
+}
+
+.left__bottom {
+  flex: 0 0 25%;
+  background-color: var(--color-purple);
+}
+
+/* ===== 中间列内区域 ===== */
+.middle__top {
+  flex: 0 0 85%;
+  background-color: var(--color-lime);
+}
+
+.middle__bottom {
+  flex: 0 0 15%;
+  background-color: var(--color-darkpurple);
+}
+
+/* ===== 右侧列内区域 ===== */
+.right__top {
+  flex: 0 0 30%;
+  background-color: var(--color-darkred);
+}
+
+.right__middle {
+  flex: 0 0 40%;
+  background-color: var(--color-cyan);
+}
+
+.right__bottom {
+  flex: 0 0 30%;
+  background-color: var(--color-green);
+}
+
+/* ===== 终端组件样式 ===== */
+.terminal-box {
+  width: 800px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 200px; /* 添加最小高度 */
+}
+
+.terminal-border-top, 
+.terminal-border-bottom {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.terminal-border-top {
+  height: 64px;
+  background-image: url(../assets/border_top.png);
+}
+
+.terminal-content {
+  /* flex: 1; */
+  border-left: 10px solid var(--color-text);
+  border-right: 10px solid var(--color-text);
+  background-color: #000;
+  min-height: 100px; /* 确保最小高度 */
+}
+
+.terminal-content {
+    height: 735px;
+    overflow-y: auto;
+    padding: 15px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    font-size: 0.85rem;
+    color: var(--color-text);
+    line-height: 1.45;
+    font-family: 'Consolas', 'Courier New', monospace;
+}
+
+    /* 自定义滚动条 */
+    .terminal-content::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    .terminal-content::-webkit-scrollbar-track {
+      background: #0a1520;
+    }
+    
+    .terminal-content::-webkit-scrollbar-thumb {
+      background: var(--color-header);
+      border-radius: 4px;
+    }
+    
+    .terminal-content::-webkit-scrollbar-thumb:hover {
+      background: var(--color-info);
+    }
+
+
+    .terminal-line {
+      margin-bottom: 12px;
+      animation: fadeIn 0.2s forwards;
+      animation-delay: calc(var(--delay) * 0.05s);
+      display: flex;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateX(-10px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .timestamp {
+      color: #7a89a5;
+      min-width: 100px;
+      font-size: 0.9rem;
+    }
+    .log-type {
+        width: 70px;
+      margin: 0 10px;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      min-width: 60px;
+      text-align: center;
+    }
+
+    .info { background: rgba(99, 179, 255, 0.15); color: var(--color-info); border-left: 2px solid var(--color-info);}
+    .warn { background: rgba(255, 189, 46, 0.15); color: var(--color-warn); border-left: 2px solid var(--color-warn); }
+    .error { background: rgba(255, 95, 87, 0.15); color: var(--color-error); border-left: 2px solid var(--color-error); }
+    .success { background: rgba(0, 255, 140, 0.15); color: var(--color-active); border-left: 2px solid var(--color-active); }
+    .debug { background: rgba(180, 120, 255, 0.15); color: #b478ff; border-left: 2px solid #b478ff; }
+    
+    .log-content {
+      flex: 1;
+      word-break: break-word;
+    }
+    
+    .highlight {
+      color: var(--color-active);
+      font-weight: bold;
+    }
+
+.terminal-border-bottom {
+  height: 47px;
+  background-image: url(../assets/border_bottom.png);
+}
+
+/* ===== 响应式设计 ===== */
+@media (max-width: 1200px) {
+  .terminal-box {
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .body__left, 
+  .body__middle, 
+  .body__right {
+    flex: 1 1 auto; /* 允许在小屏幕上折叠 */
+  }
+}

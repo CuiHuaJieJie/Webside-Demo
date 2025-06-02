@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="一纸人间烟火簿 - 数字化个人生活记录平台">
+  <title>一纸人间烟火簿</title>
+  
+  <!-- 预加载关键资源 -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- 主题颜色 -->
+  <meta name="theme-color" content="#000000">
+</head>
+<body>
+  <!-- 页面主布局 -->
+  <div class="container" role="main">
+    <!-- 主内容区 -->
+    <div class="container__main" aria-label="主内容区">
+      <!-- 头部区域 -->
+      <header class="main__head" role="banner" aria-label="页面标题和导航">
+      </header>
+      
+      <!-- 主体区域 -->
+      <div class="main__body" role="region" aria-label="内容面板">
+        <!-- 左区内容 -->
+        <section class="body__left body-column" aria-labelledby="left-section-title">
+          <div class="left__top column-section" aria-label="信息终端">
+            <div class="terminal-box">
+                <div class="terminal-border-top"></div>
+                <div class="terminal-content" id="terminal-output">
+
+                </div>
+                <div class="terminal-border-bottom"></div>
+            </div>
+          </div>
+          <div class="left__bottom column-section" aria-label="二级数据指标"></div>
+        </section>
+        
+        <!-- 中区内容 -->
+        <section class="body__middle body-column" aria-labelledby="center-section-title">
+          <div class="middle__top column-section" aria-label="核心交互面板"></div>
+          <div class="middle__bottom column-section" aria-label="操作控制区"></div>
+        </section>
+        
+        <!-- 右区内容 -->
+        <section class="body__right body-column" aria-labelledby="right-section-title">
+          <div class="right__top column-section" aria-label="通知区域"></div>
+          <div class="right__middle column-section" aria-label="动态信息流"></div>
+          <div class="right__bottom column-section" aria-label="快速操作面板"></div>
+        </section>
+      </div>
+    </div>
+    
+    <!-- 右侧工具区 -->
+    <aside class="container__right" role="banner" aria-label="滚动面板"></aside>
+  </div>
+</body>
+<script src="js/main.js"></script>
+</html>
